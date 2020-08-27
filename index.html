@@ -26,9 +26,9 @@
                 leave-active-class="animate__animated animate__fadeOut animate__faster"
                 >
                     <div class="popup" enter-active-class="animate_animated animate__fadeIn" v-if="mostrarPopup">
-                        <div class="row">
+                        <div class="row justify-content-center">
                             <div class="col-lg-4">
-                                <div class="cuadro align-middle">
+                                <div class="cuadro align-middle shadow-lg">
                                         <div class="row justify-content-center mb-2">
                                             <h4>Seleccioná opción:</h4>
                                         </div>
@@ -64,7 +64,7 @@
                             <transition-group 
                             name="tg1"
                             tag="div"
-                            enter-active-class="animate__animated animate__fadeInUp"
+                            enter-active-class="animate__animated animate__zoomIn animate__faster"
                             >
                                 <div class="hamburguesa" v-bind:key="hamburguesa.id" v-for="hamburguesa in hamburguesas">
                                     <p>
@@ -75,19 +75,24 @@
                                             <i class="fas fa-edit"></i>
                                         </span>
                                     </p>
-                                    <div class="toppings" v-if="hamburguesa.editando">
-                                        <div>
-                                            <p class="editar-titulo">Toppings</p>
-                                            <button v-for="topping in hamburguesa.toppings" class="btn-topping" v-bind:class="{'sin-topping': !topping.estado}" v-on:click="topping.estado = !topping.estado">{{topping.nombre}}</button>
+                                    <transition 
+                                    enter-active-class="animate__animated animate__fadeIn animate__faster"
+                                    leave-active-class="animate__animated animate__fadeOut animate__faster"
+                                    >
+                                        <div class="toppings" v-if="hamburguesa.editando">
+                                            <div>
+                                                <p class="editar-titulo">Toppings</p>
+                                                <button v-for="topping in hamburguesa.toppings" class="btn-topping" v-bind:class="{'sin-topping': !topping.estado}" v-on:click="topping.estado = !topping.estado">{{topping.nombre}}</button>
+                                            </div>
+                                            <div class="mt-1">
+                                                <p class="editar-titulo">Extras</p>
+                                                <button v-for="extra in hamburguesa.extras" class="btn-extras" v-bind:class="{'sin-topping': !extra.estado}" v-on:click="extra.estado = !extra.estado">{{extra.nombre}} (+${{extra.precio}})</button>
+                                            </div>
+                                            <div>
+                                                <button class="btn-borrar" v-on:click="remove(hamburguesa.id)"><i class="fas fa-trash"></i> Borrar Hamburguesa</button>
+                                            </div>
                                         </div>
-                                        <div class="mt-1">
-                                            <p class="editar-titulo">Extras</p>
-                                            <button v-for="extra in hamburguesa.extras" class="btn-extras" v-bind:class="{'sin-topping': !extra.estado}" v-on:click="extra.estado = !extra.estado">{{extra.nombre}} (+${{extra.precio}})</button>
-                                        </div>
-                                        <div>
-                                            <button class="btn-borrar" v-on:click="remove(hamburguesa.id)"><i class="fas fa-trash"></i> Borrar Hamburguesa</button>
-                                        </div>
-                                    </div>
+                                    </transition>
                                 </div>
                             </transition-group>
 
@@ -95,7 +100,7 @@
                             <transition-group
                             name=tg2
                             tag="div"
-                            enter-active-class="animate__animated animate__fadeInUp"
+                            enter-active-class="animate__animated animate__zoomIn animate__faster"
                             >
                                 <div class="porcion-de-papas" v-bind:key="porcion.id" v-for="porcion in papas">
                                     <p>
@@ -106,11 +111,16 @@
                                             <i class="fas fa-edit"></i>
                                         </span>
                                     </p>
-                                    <div class="toppings" v-if="porcion.editando">
-                                        <div>
-                                            <button class="btn-borrar" v-on:click="removePapa(porcion.id)"><i class="fas fa-trash"></i> Borrar porcion</button>
+                                    <transition 
+                                    enter-active-class="animate__animated animate__fadeIn animate__faster"
+                                    leave-active-class="animate__animated animate__fadeOut animate__faster"
+                                    >
+                                        <div class="toppings" v-if="porcion.editando">
+                                            <div>
+                                                <button class="btn-borrar" v-on:click="removePapa(porcion.id)"><i class="fas fa-trash"></i> Borrar Porcion</button>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </transition>
                                 </div>
                             </transition-group>
                             <!-- Botón Agregar Item -->

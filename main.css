@@ -6,6 +6,10 @@ body{
 
 button:focus {outline:0;}
 
+button:hover {
+    color: white !important;
+}
+
 hr{
     border: 1px solid white;
 }
@@ -46,7 +50,7 @@ p{
 
 .cuadro{
     z-index: 9999;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 1);
     border-radius: 30px;
     width: 70%;
     margin: 0 auto;
