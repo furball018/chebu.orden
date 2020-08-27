@@ -1,0 +1,142 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacer pedido - CHEBU</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://kit.fontawesome.com/58c7cb6f88.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+</head>
+<body>
+    <div id="app">
+
+        <!-- Background -->
+        <div class="background">
+            <div class="strip strip-1"></div>
+            
+            <!-- Main Container -->
+            <div class="container">
+                
+                <transition 
+                enter-active-class="animate__animated animate__fadeIn animate__faster"
+                leave-active-class="animate__animated animate__fadeOut animate__faster"
+                >
+                    <div class="popup" enter-active-class="animate_animated animate__fadeIn" v-if="mostrarPopup">
+                        <div class="cuadro align-middle">
+                                <div class="row justify-content-center mb-2">
+                                    <h4>Seleccioná opción:</h4>
+                                </div>
+                                <div class="row justify-content-center mb-2">
+                                    <div class="col">
+                                        <button class="btn btn-popup" v-for="tipo in tiposDeHamburguesas" v-on:click="add(tipo)">{{tipo.nombre}}</button>
+                                        <button class="btn btn-popup" v-for="tipo in tiposDePapas" v-on:click="addPapa(tipo)">{{tipo.nombre}}</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </transition>
+                        
+                <div class="row justify-content-center mt-5">
+                    <div class="col-lg-4">
+                        <div class="logo mx-auto"></div>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center mb-2">
+                    <h4>Armá tu pedido!</h4>
+                </div>
+                
+                <!-- Order Confirmation -->
+                <div class="row justify-content-center mb-3">
+                    <div class="col-lg-4">
+                        <div class="confirmation">
+                            <!-- Items editables -->
+                            <p v-if="hamburguesas.length !== 0">Hamburguesas</p>
+                            <transition-group 
+                            name="tg1"
+                            tag="div"
+                            enter-active-class="animate__animated animate__fadeInUp"
+                            >
+                                <div class="hamburguesa" v-bind:key="hamburguesa.id" v-for="hamburguesa in hamburguesas">
+                                    <p>
+                                        {{hamburguesa.tipo}}
+                                        <span class="precio-individual">${{calcIndividual(hamburguesa)}}</span>
+                                        
+                                        <span class="icon" v-on:click="hamburguesa.editando = !hamburguesa.editando">
+                                            <i class="fas fa-edit"></i>
+                                        </span>
+                                    </p>
+                                    <div class="toppings" v-if="hamburguesa.editando">
+                                        <div>
+                                            <p class="editar-titulo">Toppings</p>
+                                            <button v-for="topping in hamburguesa.toppings" class="btn-topping" v-bind:class="{'sin-topping': !topping.estado}" v-on:click="topping.estado = !topping.estado">{{topping.nombre}}</button>
+                                        </div>
+                                        <div class="mt-1">
+                                            <p class="editar-titulo">Extras</p>
+                                            <button v-for="extra in hamburguesa.extras" class="btn-extras" v-bind:class="{'sin-topping': !extra.estado}" v-on:click="extra.estado = !extra.estado">{{extra.nombre}} (+${{extra.precio}})</button>
+                                        </div>
+                                        <div>
+                                            <button class="btn-borrar" v-on:click="remove(hamburguesa.id)"><i class="fas fa-trash"></i> Borrar Hamburguesa</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </transition-group>
+
+                            <p v-if="papas.length !== 0">Porciones de papa</p>
+                            <transition-group
+                            name=tg2
+                            tag="div"
+                            enter-active-class="animate__animated animate__fadeInUp"
+                            >
+                                <div class="porcion-de-papas" v-bind:key="porcion.id" v-for="porcion in papas">
+                                    <p>
+                                        {{porcion.tipo}}
+                                        <span class="precio-individual">${{porcion.precio}}</span>
+                                        
+                                        <span class="icon" v-on:click="porcion.editando = !porcion.editando">
+                                            <i class="fas fa-edit"></i>
+                                        </span>
+                                    </p>
+                                    <div class="toppings" v-if="porcion.editando">
+                                        <div>
+                                            <button class="btn-borrar" v-on:click="removePapa(porcion.id)"><i class="fas fa-trash"></i> Borrar porcion</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </transition-group>
+                            <!-- Botón Agregar Item -->
+                            <button class="btn btn-add" v-on:click="mostrarPopup = true">Agregar <i class="fas fa-hamburger"></i></button>
+                            <p class="total">Total: <span class="precio-total">${{calcTotal}}</span></p>
+                            <p class="total-chico">(+ el precio del envío)</p>
+                            <hr>
+
+                            <div class="form-group">
+                                <label>Nombre</label>
+                                <input type="text" class="form-control" :class="{ 'requerido' : nombre === '' }" v-model="nombre">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Dirección</label>
+                                <input type="text" class="form-control" :class="{ 'requerido' : direccion === '' }" v-model="direccion">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Observaciones</label>
+                                <textarea class="form-control" rows="3" v-model="observaciones"></textarea>
+                            </div>
+                            
+                            <button class="btn btn-send" v-on:click="send" v-bind:disabled="(nombre == '') || (direccion == '')">Enviar Pedido</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <script src="pedido.js"></script>
+</body>
+</html>
