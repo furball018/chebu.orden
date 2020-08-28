@@ -34,8 +34,8 @@
                                         </div>
                                         <div class="row justify-content-center mb-2">
                                             <div class="col">
-                                                <button class="btn btn-popup" v-for="tipo in tiposDeHamburguesas" v-on:click="add(tipo)">{{tipo.nombre}}</button>
-                                                <button class="btn btn-popup" v-for="tipo in tiposDePapas" v-on:click="addPapa(tipo)">{{tipo.nombre}}</button>
+                                                <button class="btn btn-popup" v-for="tipo in tiposDeHamburguesas" v-on:click="add(tipo)">{{tipo.nombre}}<span class="precio-individual-light">${{tipo.precio}}</span></button>
+                                                <button class="btn btn-popup" v-for="tipo in tiposDePapas" v-on:click="addPapa(tipo)">{{tipo.nombre}}<span class="precio-individual-light">${{tipo.precio}}</span></button>
                                             </div>
                                         </div>
                                     </div>
@@ -60,7 +60,7 @@
                     <div class="col-lg-4">
                         <div class="confirmation">
                             <!-- Items editables -->
-                            <p v-if="hamburguesas.length !== 0">Hamburguesas</p>
+                            <p class="mb-2" v-if="hamburguesas.length !== 0">Hamburguesas</p>
                             <transition-group 
                             name="tg1"
                             tag="div"
@@ -96,7 +96,7 @@
                                 </div>
                             </transition-group>
 
-                            <p v-if="papas.length !== 0">Porciones de papa</p>
+                            <p class="mb-2" v-if="papas.length !== 0">Porciones de papa</p>
                             <transition-group
                             name=tg2
                             tag="div"
@@ -124,9 +124,11 @@
                                 </div>
                             </transition-group>
                             <!-- Botón Agregar Item -->
-                            <button class="btn btn-add animate__animated animate__jello animate__delay-2s animate__slow" v-on:click="mostrarPopup = true">Agregar <i class="fas fa-hamburger"></i></button>
-                            <p class="total">Total: <span class="precio-total">${{calcTotal}}</span></p>
-                            <p class="total-chico">(+ el precio del envío)</p>
+                            <button class="btn btn-add animate__animated animate__jello animate__delay-2s animate__slow mt-2" v-on:click="mostrarPopup = true">Agregar <i class="fas fa-hamburger"></i></button>
+                            
+                            <!-- Total -->
+                            <p class="total mt-4">Total: <span class="precio-total">${{calcTotal}}</span></p>
+                            <p class="total-chico">(+ precio del envío)</p>
                             <hr>
 
                             <div class="form-group">
