@@ -5,31 +5,31 @@ var app = new Vue({
         msg: "", //variable que va a contener el mensaje cuando se vaya creando
         mostrarPopup: false, //bool para mostrar y ocultar el popup de agregar
         tiposDeHamburguesas: [ //tipos básicos de Hamburguesas
-            {
-                nombre: "Hamburguesa Simple",
-                precio: 250
-            },
-            {
-                nombre: "Hamburguesa Doble",
-                precio: 300
-            },
-            {
-                nombre: "Hamburguesa Triple",
-                precio: 350
-            }
+            {nombre: "Hamburguesa Simple", precio: 250},
+            {nombre: "Hamburguesa Doble", precio: 300},
+            {nombre: "Hamburguesa Triple", precio: 350}
         ],
         tiposDePapas: [
-            {
-                nombre: "P. de Papas",
-                precio: 150
-            },
-            {
-                nombre: "P. de Papas con Chedar",
-                precio: 200
-            }
+            {nombre: "P. de Papas", precio: 150},
+            {nombre: "P. de Papas con Chedar", precio: 200}
+        ],
+        tiposDeBebidas: [
+            {nombre:"Coca 500ml", precio: 60},
+            {nombre:"Coca 1,5L", precio: 150},
+            {nombre:"Coca Zero 500ml", precio: 60},
+            {nombre:"Coca Zero 1,5L", precio: 150},
+            {nombre:"Sprite 1,5L", precio: 150},
+            {nombre:"Cerveza Andes Rubia", precio: 90},
+            {nombre:"Cerveza Andes Roja", precio: 100},
+            {nombre:"Cerveza Andes IPA", precio: 100},
+            {nombre:"Cerveza Budweiser", precio: 80},
+            {nombre:"Cerveza Schneider", precio: 80},
+            {nombre:"Cerveza Brahma", precio: 80},
+            {nombre:"Cerveza Quilmes", precio:80}
         ],
         hamburguesas: [], //contenedor para las hamburguesas del pedido
         papas: [], //lo mismo pero para las papas
+        bebidas: [],
         total: 0, //contenedor del total
         tweenTotal: 0,
         nombre: "", //datos del cliente
@@ -68,11 +68,23 @@ var app = new Vue({
             });
             this.mostrarPopup = false;
         },
+        addBebida: function(tipo){
+            this.bebidas.push({
+                id: Date.now(),
+                tipo: tipo.nombre,
+                precio: tipo.precio,
+                editando: false
+            });
+            this.mostrarPopup = false;
+        },
         remove: function(id){
             this.hamburguesas = this.hamburguesas.filter(h => h.id !== id);
         },
         removePapa: function(id){
             this.papas = this.papas.filter(p => p.id !== id);
+        },
+        removeBebida: function(id){
+            this.bebidas = this.bebidas.filter(p => p.id !== id);
         },
         calcIndividual: function(hamburguesa){
             var precio = hamburguesa.precio;

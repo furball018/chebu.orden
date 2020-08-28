@@ -96,15 +96,7 @@ textarea {
     color: white;
 }
 
-.hamburguesa{
-    color: #18232d;
-    background-color: rgba(255, 255, 255, 0.7);
-    padding: 10px;
-    margin-bottom: 5px;
-    border-radius: 4px;
-}
-
-.porcion-de-papas{
+.orden{
     color: #18232d;
     background-color: rgba(255, 255, 255, 0.7);
     padding: 10px;
@@ -115,7 +107,7 @@ textarea {
 .icon{
     float: right;
     margin-top: 4px;
-    margin-left: 10px;
+    margin-left: 15px;
     color: #c44243;
 }
 

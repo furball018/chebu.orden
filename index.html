@@ -36,6 +36,7 @@
                                             <div class="col">
                                                 <button class="btn btn-popup" v-for="tipo in tiposDeHamburguesas" v-on:click="add(tipo)">{{tipo.nombre}}<span class="precio-individual-light">${{tipo.precio}}</span></button>
                                                 <button class="btn btn-popup" v-for="tipo in tiposDePapas" v-on:click="addPapa(tipo)">{{tipo.nombre}}<span class="precio-individual-light">${{tipo.precio}}</span></button>
+                                                <button class="btn btn-popup" v-for="tipo in tiposDeBebidas" v-on:click="addBebida(tipo)">{{tipo.nombre}}<span class="precio-individual-light">${{tipo.precio}}</span></button>
                                             </div>
                                         </div>
                                     </div>
@@ -60,19 +61,29 @@
                     <div class="col-lg-4">
                         <div class="confirmation">
                             <!-- Items editables -->
-                            <p class="mb-2" v-if="hamburguesas.length !== 0">Hamburguesas</p>
+                            <!-- Items editables (Hamburguesas) -->
+                            <transition 
+                            enter-active-class="animate__animated animate__zoomIn animate__faster"
+                            leave-active-class="animate__animated animate__zoomOut animate__faster"
+                            >
+                                <p class="mb-2" v-if="hamburguesas.length !== 0">Hamburguesas</p>
+                            </transition>
                             <transition-group 
                             name="tg1"
                             tag="div"
                             enter-active-class="animate__animated animate__zoomIn animate__faster"
+                            leave-active-class="animate__animated animate__zoomOut animate__faster"
                             >
-                                <div class="hamburguesa" v-bind:key="hamburguesa.id" v-for="hamburguesa in hamburguesas">
+                                <div class="orden" v-bind:key="hamburguesa.id" v-for="hamburguesa in hamburguesas">
                                     <p>
                                         {{hamburguesa.tipo}}
                                         <span class="precio-individual">${{calcIndividual(hamburguesa)}}</span>
                                         
                                         <span class="icon" v-on:click="hamburguesa.editando = !hamburguesa.editando">
                                             <i class="fas fa-edit"></i>
+                                        </span>
+                                        <span class="icon" v-on:click="remove(hamburguesa.id)">
+                                            <i class="fas fa-trash"></i>
                                         </span>
                                     </p>
                                     <transition 
@@ -88,39 +99,58 @@
                                                 <p class="editar-titulo">Extras</p>
                                                 <button v-for="extra in hamburguesa.extras" class="btn-extras" v-bind:class="{'sin-topping': !extra.estado}" v-on:click="extra.estado = !extra.estado">{{extra.nombre}} (+${{extra.precio}})</button>
                                             </div>
-                                            <div>
-                                                <button class="btn-borrar" v-on:click="remove(hamburguesa.id)"><i class="fas fa-trash"></i> Borrar Hamburguesa</button>
-                                            </div>
                                         </div>
                                     </transition>
                                 </div>
                             </transition-group>
 
-                            <p class="mb-2" v-if="papas.length !== 0">Porciones de papa</p>
+                            <!-- Items editables (Papas) -->
+                            <transition 
+                            enter-active-class="animate__animated animate__zoomIn animate__faster"
+                            leave-active-class="animate__animated animate__zoomOut animate__faster"
+                            >
+                                <p class="mb-2" v-if="papas.length !== 0">Porciones de papa</p>
+                            </transition>
                             <transition-group
                             name=tg2
                             tag="div"
                             enter-active-class="animate__animated animate__zoomIn animate__faster"
+                            leave-active-class="animate__animated animate__zoomOut animate__faster"
                             >
-                                <div class="porcion-de-papas" v-bind:key="porcion.id" v-for="porcion in papas">
+                                <div class="orden" v-bind:key="porcion.id" v-for="porcion in papas">
                                     <p>
                                         {{porcion.tipo}}
                                         <span class="precio-individual">${{porcion.precio}}</span>
                                         
-                                        <span class="icon" v-on:click="porcion.editando = !porcion.editando">
-                                            <i class="fas fa-edit"></i>
+                                        <span class="icon" v-on:click="removePapa(porcion.id)">
+                                            <i class="fas fa-trash"></i>
                                         </span>
                                     </p>
-                                    <transition 
-                                    enter-active-class="animate__animated animate__fadeIn animate__faster"
-                                    leave-active-class="animate__animated animate__fadeOut animate__faster"
-                                    >
-                                        <div class="toppings" v-if="porcion.editando">
-                                            <div>
-                                                <button class="btn-borrar" v-on:click="removePapa(porcion.id)"><i class="fas fa-trash"></i> Borrar Porcion</button>
-                                            </div>
-                                        </div>
-                                    </transition>
+                                </div>
+                            </transition-group>
+
+                            <!-- Items editables (Bebidas) -->
+                            <transition 
+                            enter-active-class="animate__animated animate__zoomIn animate__faster"
+                            leave-active-class="animate__animated animate__zoomOut animate__faster"
+                            >
+                                <p class="mb-2" v-if="bebidas.length !== 0">Bebidas</p>
+                            </transition>
+                            <transition-group
+                            name=tg2
+                            tag="div"
+                            enter-active-class="animate__animated animate__zoomIn animate__faster"
+                            leave-active-class="animate__animated animate__zoomOut animate__faster"
+                            >
+                                <div class="orden" v-bind:key="bebida.id" v-for="bebida in bebidas">
+                                    <p>
+                                        {{bebida.tipo}}
+                                        <span class="precio-individual">${{bebida.precio}}</span>
+                                        
+                                        <span class="icon" v-on:click="removeBebida(bebida.id)">
+                                            <i class="fas fa-trash"></i>
+                                        </span>
+                                    </p>
                                 </div>
                             </transition-group>
                             <!-- Botón Agregar Item -->
