@@ -17,6 +17,11 @@ hr{
 p{
     margin: 0;
 }
+
+textarea {
+    resize: none;
+}
+
 .background{
     background-color:#18232d;
     z-index: -1;
@@ -62,6 +67,10 @@ p{
     background-color: #18232d;
     margin-bottom: 10px;
     color: white;
+}
+
+.btn-popup:hover{
+    background-color: rgba(24, 35, 45, .7);
 }
 
 .logo{
@@ -140,6 +149,10 @@ p{
     color: white;
 }
 
+.btn-add:hover{
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
 .editar-titulo{
     font-size: small;
     margin-bottom: 5px;
@@ -188,4 +201,8 @@ p{
     width: 100%;
     background-color: #c44243;
     color: white;
+}
+
+.required{
+    color: #c44243;
 }

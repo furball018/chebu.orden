@@ -130,12 +130,12 @@
                             <hr>
 
                             <div class="form-group">
-                                <label>Nombre</label>
+                                <label>Nombre <span v-if="nombre == ''" class="required">*</span></label>
                                 <input type="text" class="form-control" :class="{ 'requerido' : nombre === '' }" v-model="nombre">
                             </div>
                             
                             <div class="form-group">
-                                <label>Dirección</label>
+                                <label>Dirección <span v-if="direccion == ''" class="required">*</span></label>
                                 <input type="text" class="form-control" :class="{ 'requerido' : direccion === '' }" v-model="direccion">
                             </div>
                             
@@ -144,7 +144,7 @@
                                 <textarea class="form-control" rows="3" v-model="observaciones"></textarea>
                             </div>
                             
-                            <button class="btn btn-send" v-on:click="send" v-bind:disabled="(nombre == '') || (direccion == '')">Enviar Pedido</button>
+                            <button class="btn btn-send" v-on:click="send" v-bind:disabled="(nombre == '') || (direccion == '' || calcTotal == 0)">Enviar Pedido</button>
                         </div>
                     </div>
                 </div>
