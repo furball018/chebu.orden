@@ -44,17 +44,17 @@ var app = new Vue({
                 precio: tipo.precio,
                 editando: false,
                 toppings: [
-                    {nombre: "Panceta", precio: 0, estado: true},
-                    {nombre: "Cebolla caramelizada", precio: 0, estado: true},
-                    {nombre: "Lechuga", precio: 0, estado: true},
-                    {nombre: "Tomate", precio: 0, estado: true},
-                    {nombre: "Salsa CHEBU", precio: 0, estado: true},
-                    {nombre: "Salsa Picante", precio: 0, estado: false}
+                    {nombre: "🥓 Panceta", precio: 0, estado: true},  
+                    {nombre: "🧅 Cebolla caramelizada", precio: 0, estado: true}, 
+                    {nombre: "🥬 Lechuga", precio: 0, estado: true},
+                    {nombre: "🍅 Tomate", precio: 0, estado: true},
+                    {nombre: "🥣 Salsa CHEBU", precio: 0, estado: true},
+                    {nombre: "🌶️ Salsa Picante", precio: 0, estado: false}
                 ],
                 extras: [
-                    {nombre: "Doble Panceta", precio: 30, estado: false},
-                    {nombre: "Doble Chedar", precio: 30, estado: false},
-                    {nombre: "Papas con doble chedar", precio: 40, estado: false}
+                    {nombre: "🥓 Doble Panceta", precio: 30, estado: false},
+                    {nombre: "🧀 Doble Chedar", precio: 30, estado: false},
+                    {nombre: "🍟Papas con doble chedar", precio: 40, estado: false}
                 ]
             });
             this.mostrarPopup = false;

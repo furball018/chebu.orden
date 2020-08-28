@@ -30,8 +30,8 @@ p{
 }
 
 .strip-1{
-    height: 230px;
-    transform: skewY(-5deg) translateY(-100px);
+    height: 500px;
+    transform: skewY(-5deg) translateY(-370px);
 }
 
 .popup{
