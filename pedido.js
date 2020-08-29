@@ -76,12 +76,14 @@ var app = new Vue({
                 {id: Number, nombre: 'P. de Papas', precio: 150},
                 {id: Number, nombre: 'P. de Papas con Chedar', precio: 200}
             ],
-            bebidas: [
+            gaseosas: [
                 {id: Number, nombre:'Coca 500ml', precio: 60},
                 {id: Number, nombre:'Coca 1,5L', precio: 150},
                 {id: Number, nombre:'Coca Zero 500ml', precio: 60},
                 {id: Number, nombre:'Coca Zero 1,5L', precio: 150},
                 {id: Number, nombre:'Sprite 1,5L', precio: 150},
+            ],
+            cervezas: [
                 {id: Number, nombre:'Cerveza Andes Rubia', precio: 90},
                 {id: Number, nombre:'Cerveza Andes Roja', precio: 100},
                 {id: Number, nombre:'Cerveza Andes IPA', precio: 100},
@@ -96,7 +98,8 @@ var app = new Vue({
         pedido: {
                 hamburguesas: [],
                 papas: [],
-                bebidas: []
+                gaseosas: [],
+                cervezas: []
         },
         
         //Datos del cliente
@@ -152,7 +155,11 @@ var app = new Vue({
                 this.msg += p.nombre + salto;
             });
 
-            this.pedido.bebidas.forEach(b => {
+            this.pedido.gaseosas.forEach(b => {
+                this.msg += b.nombre + salto;
+            });
+
+            this.pedido.cervezas.forEach(b => {
                 this.msg += b.nombre + salto;
             });
             
@@ -181,8 +188,12 @@ var app = new Vue({
                 total += papa.precio;
             });
 
-            this.pedido.bebidas.forEach(bebida => {
-                total += bebida.precio;
+            this.pedido.gaseosas.forEach(gaseosa => {
+                total += gaseosa.precio;
+            });
+
+            this.pedido.cervezas.forEach(cerveza => {
+                total += cerveza.precio;
             });
             return total;
         }

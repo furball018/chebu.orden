@@ -59,9 +59,15 @@
                                         </div>
                                     </div>
                                     
-                                    <div v-if="tipoElegido == 'bebidas'" class="row justify-content-center mb-2">
+                                    <div v-if="tipoElegido == 'gaseosas'" class="row justify-content-center mb-2">
                                         <div class="col">
-                                            <button class="btn btn-popup" v-for="oferta in ofertas.bebidas" v-on:click="add(oferta, pedido.bebidas)">{{oferta.nombre}}<span class="precio-individual-light">${{oferta.precio}}</span></button>
+                                            <button class="btn btn-popup" v-for="oferta in ofertas.gaseosas" v-on:click="add(oferta, pedido.gaseosas)">{{oferta.nombre}}<span class="precio-individual-light">${{oferta.precio}}</span></button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div v-if="tipoElegido == 'cervezas'" class="row justify-content-center mb-2">
+                                        <div class="col">
+                                            <button class="btn btn-popup" v-for="oferta in ofertas.cervezas" v-on:click="add(oferta, pedido.cervezas)">{{oferta.nombre}}<span class="precio-individual-light">${{oferta.precio}}</span></button>
                                         </div>
                                     </div>
                                 </div>
@@ -153,12 +159,12 @@
                                 </div>
                             </transition-group>
 
-                            <!-- Items editables (Bebidas) -->
+                            <!-- Items editables (Gaseosas) -->
                             <transition 
                             enter-active-class="animate__animated animate__zoomIn animate__faster"
                             leave-active-class="animate__animated animate__zoomOut animate__faster"
                             >
-                                <p class="mb-2" v-if="pedido.bebidas.length !== 0">Bebidas</p>
+                                <p class="mb-2" v-if="pedido.gaseosas.length !== 0">Gaseosas</p>
                             </transition>
                             <transition-group
                             name=tg2
@@ -166,17 +172,43 @@
                             enter-active-class="animate__animated animate__zoomIn animate__faster"
                             leave-active-class="animate__animated animate__zoomOut animate__faster"
                             >
-                                <div class="orden" v-bind:key="bebida.id" v-for="(bebida, index) in pedido.bebidas">
+                                <div class="orden" v-bind:key="bebida.id" v-for="(bebida, index) in pedido.gaseosas">
                                     <p>
                                         {{bebida.nombre}}
                                         <span class="precio-individual">${{bebida.precio}}</span>
                                         
-                                        <span class="icon" v-on:click="remove(index, pedido.bebidas)">
+                                        <span class="icon" v-on:click="remove(index, pedido.gaseosas)">
                                             <i class="fas fa-trash"></i>
                                         </span>
                                     </p>
                                 </div>
                             </transition-group>
+
+                            <!-- Items editables (Cervezas) -->
+                            <transition 
+                            enter-active-class="animate__animated animate__zoomIn animate__faster"
+                            leave-active-class="animate__animated animate__zoomOut animate__faster"
+                            >
+                                <p class="mb-2" v-if="pedido.cervezas.length !== 0">Cervezas</p>
+                            </transition>
+                            <transition-group
+                            name=tg2
+                            tag="div"
+                            enter-active-class="animate__animated animate__zoomIn animate__faster"
+                            leave-active-class="animate__animated animate__zoomOut animate__faster"
+                            >
+                                <div class="orden" v-bind:key="bebida.id" v-for="(bebida, index) in pedido.cervezas">
+                                    <p>
+                                        {{bebida.nombre}}
+                                        <span class="precio-individual">${{bebida.precio}}</span>
+                                        
+                                        <span class="icon" v-on:click="remove(index, pedido.cervezas)">
+                                            <i class="fas fa-trash"></i>
+                                        </span>
+                                    </p>
+                                </div>
+                            </transition-group>
+
                             <!-- Botón Agregar Item -->
                             <button class="btn btn-add animate__animated animate__jello animate__delay-2s animate__slow mt-2" v-on:click="mostrarPopup = true">Agregar <i class="fas fa-hamburger"></i></button>
                             
