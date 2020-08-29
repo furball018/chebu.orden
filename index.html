@@ -49,25 +49,25 @@
                                     
                                     <div v-if="tipoElegido == 'hamburguesas'" class="row justify-content-center mb-2">
                                         <div class="col">
-                                            <button class="btn btn-popup" v-for="oferta in ofertas.hamburguesas" v-on:click="add(oferta, pedido.hamburguesas)">{{oferta.nombre}}<span class="precio-individual-light">${{oferta.precio}}</span></button>
+                                            <button class="btn btn-popup" v-for="oferta in ofertas.hamburguesas" v-on:click="add(oferta, 'hamburguesas')">{{oferta.nombre}}<span class="precio-individual-light">${{oferta.precio}}</span></button>
                                         </div>
                                     </div>
                                     
                                     <div v-if="tipoElegido == 'papas'" class="row justify-content-center mb-2">
                                         <div class="col">
-                                            <button class="btn btn-popup" v-for="oferta in ofertas.papas" v-on:click="add(oferta, pedido.papas)">{{oferta.nombre}}<span class="precio-individual-light">${{oferta.precio}}</span></button>
+                                            <button class="btn btn-popup" v-for="oferta in ofertas.papas" v-on:click="add(oferta, 'papas')">{{oferta.nombre}}<span class="precio-individual-light">${{oferta.precio}}</span></button>
                                         </div>
                                     </div>
                                     
                                     <div v-if="tipoElegido == 'gaseosas'" class="row justify-content-center mb-2">
                                         <div class="col">
-                                            <button class="btn btn-popup" v-for="oferta in ofertas.gaseosas" v-on:click="add(oferta, pedido.gaseosas)">{{oferta.nombre}}<span class="precio-individual-light">${{oferta.precio}}</span></button>
+                                            <button class="btn btn-popup" v-for="oferta in ofertas.gaseosas" v-on:click="add(oferta, 'gaseosas')">{{oferta.nombre}}<span class="precio-individual-light">${{oferta.precio}}</span></button>
                                         </div>
                                     </div>
                                     
                                     <div v-if="tipoElegido == 'cervezas'" class="row justify-content-center mb-2">
                                         <div class="col">
-                                            <button class="btn btn-popup" v-for="oferta in ofertas.cervezas" v-on:click="add(oferta, pedido.cervezas)">{{oferta.nombre}}<span class="precio-individual-light">${{oferta.precio}}</span></button>
+                                            <button class="btn btn-popup" v-for="oferta in ofertas.cervezas" v-on:click="add(oferta, 'cervezas')">{{oferta.nombre}}<span class="precio-individual-light">${{oferta.precio}}</span></button>
                                         </div>
                                     </div>
                                 </div>
@@ -112,7 +112,7 @@
                                         <span class="icon" v-on:click="hamburguesa.editando = !hamburguesa.editando">
                                             <i class="fas fa-edit"></i>
                                         </span>
-                                        <span class="icon" v-on:click="remove(index, pedido.hamburguesas)">
+                                        <span class="icon" v-on:click="remove(index, 'hamburguesas')">
                                             <i class="fas fa-trash"></i>
                                         </span>
                                     </p>
@@ -152,7 +152,7 @@
                                         {{papa.nombre}}
                                         <span class="precio-individual">${{papa.precio}}</span>
                                         
-                                        <span class="icon" v-on:click="remove(index, pedido.papas)">
+                                        <span class="icon" v-on:click="remove(index, 'papas')">
                                             <i class="fas fa-trash"></i>
                                         </span>
                                     </p>
@@ -172,12 +172,12 @@
                             enter-active-class="animate__animated animate__zoomIn animate__faster"
                             leave-active-class="animate__animated animate__zoomOut animate__faster"
                             >
-                                <div class="orden" v-bind:key="bebida.id" v-for="(bebida, index) in pedido.gaseosas">
+                                <div class="orden" v-bind:key="gaseosa.id" v-for="(gaseosa, index) in pedido.gaseosas">
                                     <p>
-                                        {{bebida.nombre}}
-                                        <span class="precio-individual">${{bebida.precio}}</span>
+                                        {{gaseosa.nombre}}
+                                        <span class="precio-individual">${{gaseosa.precio}}</span>
                                         
-                                        <span class="icon" v-on:click="remove(index, pedido.gaseosas)">
+                                        <span class="icon" v-on:click="remove(index, 'gaseosas')">
                                             <i class="fas fa-trash"></i>
                                         </span>
                                     </p>
@@ -197,12 +197,12 @@
                             enter-active-class="animate__animated animate__zoomIn animate__faster"
                             leave-active-class="animate__animated animate__zoomOut animate__faster"
                             >
-                                <div class="orden" v-bind:key="bebida.id" v-for="(bebida, index) in pedido.cervezas">
+                                <div class="orden" v-bind:key="cerveza.id" v-for="(cerveza, index) in pedido.cervezas">
                                     <p>
-                                        {{bebida.nombre}}
-                                        <span class="precio-individual">${{bebida.precio}}</span>
+                                        {{cerveza.nombre}}
+                                        <span class="precio-individual">${{cerveza.precio}}</span>
                                         
-                                        <span class="icon" v-on:click="remove(index, pedido.cervezas)">
+                                        <span class="icon" v-on:click="remove(index, 'cervezas')">
                                             <i class="fas fa-trash"></i>
                                         </span>
                                     </p>

@@ -128,16 +128,17 @@ var app = new Vue({
     },
     methods: {
         //Agregar al pedido
-        add: function(item, arr){
-            item.id = Date.now();
-            arr.push(item);
+        add: function(item, key){
+            let newItem = {...item}; // (!) hay que clonar el item que se pasa como referencia, sino al agregar el mismo item se repiten las animaciones.
+            newItem.id = Date.now();
+            this.pedido[key] = [...this.pedido[key], newItem];
             this.mostrarPopup = false;
             this.tipoElegido = '';
         },
 
         //Quitar del pedido
-        remove: function(i, arr){
-            arr.splice(i,1);
+        remove: function(i, key){
+            this.pedido[key].splice(i,1);
         },
 
         //Calcular precio de las hamburguesas + extras
