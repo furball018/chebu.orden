@@ -16,7 +16,7 @@ var app = new Vue({
             hamburguesas: [
                 {
                     id: Number,
-                    nombre: 'Hamburguesa Simple',
+                    nombre: '🍔 Simple',
                     precio: 250,
                     editando: false,
                     toppings: [
@@ -35,7 +35,7 @@ var app = new Vue({
                 },
                 {
                     id: Number,
-                    nombre: 'Hamburguesa Doble',
+                    nombre: '🍔 Doble',
                     precio: 300,
                     editando: false,
                     toppings: [
@@ -54,8 +54,27 @@ var app = new Vue({
                 },
                 {
                     id: Number,
-                    nombre: 'Hamburguesa Triple',
+                    nombre: '🍔 Triple',
                     precio: 350,
+                    editando: false,
+                    toppings: [
+                        {nombre: '🥓 Panceta', estado: true},  
+                        {nombre: '🧅 Cebolla caramelizada', estado: true}, 
+                        {nombre: '🥬 Lechuga', estado: true},
+                        {nombre: '🍅 Tomate', estado: true},
+                        {nombre: '🥣 Salsa CHEBU', estado: true},
+                        {nombre: '🌶️ Salsa Picante', estado: false}
+                    ],
+                    extras: [
+                        {nombre: '🥓 Doble Panceta', precio: 30, estado: false},
+                        {nombre: '🧀 Doble Chedar', precio: 30, estado: false},
+                        {nombre: '🍟 Papas con doble chedar', precio: 40, estado: false}
+                    ]
+                },
+                {
+                    id: Number,
+                    nombre: '🍔 Cuadruple',
+                    precio: 400,
                     editando: false,
                     toppings: [
                         {nombre: '🥓 Panceta', estado: true},  
@@ -73,24 +92,24 @@ var app = new Vue({
                 },
             ],
             papas: [
-                {id: Number, nombre: 'P. de Papas', precio: 150},
-                {id: Number, nombre: 'P. de Papas con Chedar', precio: 200}
+                {id: Number, nombre: '🍟 Papas simples', precio: 150},
+                {id: Number, nombre: '🍟 Papas con Chedar', precio: 200}
             ],
             gaseosas: [
-                {id: Number, nombre:'Coca-Cola 500ml', precio: 60},
-                {id: Number, nombre:'Coca-Cola 1,5L', precio: 150},
-                {id: Number, nombre:'Coca-Cola Zero 500ml', precio: 60},
-                {id: Number, nombre:'Coca-Cola Zero 1,5L', precio: 150},
-                {id: Number, nombre:'Sprite 1,5L', precio: 150},
+                {id: Number, nombre:'🥤 Coca-Cola 500ml', precio: 60},
+                {id: Number, nombre:'🥤 Coca-Cola 1,5L', precio: 150},
+                {id: Number, nombre:'🥤 Coca-Cola Zero 500ml', precio: 60},
+                {id: Number, nombre:'🥤 Coca-Cola Zero 1,5L', precio: 150},
+                {id: Number, nombre:'🥤 Sprite 1,5L', precio: 150},
             ],
             cervezas: [
-                {id: Number, nombre:'Andes Rubia', precio: 90},
-                {id: Number, nombre:'Andes Roja', precio: 100},
-                {id: Number, nombre:'Andes IPA', precio: 100},
-                {id: Number, nombre:'Budweiser', precio: 80},
-                {id: Number, nombre:'Schneider', precio: 80},
-                {id: Number, nombre:'Brahma', precio: 80},
-                {id: Number, nombre:'Quilmes', precio:80}
+                {id: Number, nombre:'🍺 Andes Rubia', precio: 90}, 
+                {id: Number, nombre:'🍺 Andes Roja', precio: 100},
+                {id: Number, nombre:'🍺 Andes IPA', precio: 100},
+                {id: Number, nombre:'🍺 Budweiser', precio: 80},
+                {id: Number, nombre:'🍺 Schneider', precio: 80},
+                {id: Number, nombre:'🍺 Brahma', precio: 80},
+                {id: Number, nombre:'🍺 Quilmes', precio:80}
             ]
         },
 
