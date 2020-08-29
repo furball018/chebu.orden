@@ -1,4 +1,4 @@
-var app = new Vue({
+let app = new Vue({
     el: '#app',
     data: {
         //Numero de teléfono al que se va a enviar el mensaje
@@ -137,13 +137,13 @@ var app = new Vue({
         },
 
         //Quitar del pedido
-        remove: function(i, key){
-            this.pedido[key].splice(i,1);
+        remove: function(id, key){
+            this.pedido[key] = this.pedido[key].filter(item => item.id !== id);
         },
 
         //Calcular precio de las hamburguesas + extras
         calcIndividual: function(hamburguesa){
-            var precio = hamburguesa.precio;
+            let precio = hamburguesa.precio;
             hamburguesa.extras.forEach(ex =>{
                 precio += ex.estado? ex.precio : 0;
             })
@@ -152,7 +152,7 @@ var app = new Vue({
 
         //Escribir el mensaje y enviarlo por whatsapp
         send: function() {
-            var salto = '%0A';
+            let salto = '%0A';
             this.msg = ''
 
             this.msg = encodeURI('*Cliente:* ' + this.nombre) + salto;
@@ -195,7 +195,7 @@ var app = new Vue({
     computed: {
         //Calcular el total del pedido
         calcTotal: function() {
-            var total = 0;
+            let total = 0;
 
             this.pedido.hamburguesas.forEach(hamburguesa => {
                 total += hamburguesa.precio;
