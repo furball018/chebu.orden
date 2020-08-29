@@ -77,20 +77,20 @@ var app = new Vue({
                 {id: Number, nombre: 'P. de Papas con Chedar', precio: 200}
             ],
             gaseosas: [
-                {id: Number, nombre:'Coca 500ml', precio: 60},
-                {id: Number, nombre:'Coca 1,5L', precio: 150},
-                {id: Number, nombre:'Coca Zero 500ml', precio: 60},
-                {id: Number, nombre:'Coca Zero 1,5L', precio: 150},
+                {id: Number, nombre:'Coca-Cola 500ml', precio: 60},
+                {id: Number, nombre:'Coca-Cola 1,5L', precio: 150},
+                {id: Number, nombre:'Coca-Cola Zero 500ml', precio: 60},
+                {id: Number, nombre:'Coca-Cola Zero 1,5L', precio: 150},
                 {id: Number, nombre:'Sprite 1,5L', precio: 150},
             ],
             cervezas: [
-                {id: Number, nombre:'Cerveza Andes Rubia', precio: 90},
-                {id: Number, nombre:'Cerveza Andes Roja', precio: 100},
-                {id: Number, nombre:'Cerveza Andes IPA', precio: 100},
-                {id: Number, nombre:'Cerveza Budweiser', precio: 80},
-                {id: Number, nombre:'Cerveza Schneider', precio: 80},
-                {id: Number, nombre:'Cerveza Brahma', precio: 80},
-                {id: Number, nombre:'Cerveza Quilmes', precio:80}
+                {id: Number, nombre:'Andes Rubia', precio: 90},
+                {id: Number, nombre:'Andes Roja', precio: 100},
+                {id: Number, nombre:'Andes IPA', precio: 100},
+                {id: Number, nombre:'Budweiser', precio: 80},
+                {id: Number, nombre:'Schneider', precio: 80},
+                {id: Number, nombre:'Brahma', precio: 80},
+                {id: Number, nombre:'Quilmes', precio:80}
             ]
         },
 
