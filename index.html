@@ -25,17 +25,42 @@
                 enter-active-class="animate__animated animate__fadeIn animate__faster"
                 leave-active-class="animate__animated animate__fadeOut animate__faster"
                 >
-                    <div class="popup" enter-active-class="animate_animated animate__fadeIn" v-if="mostrarPopup" v-on:click="mostrarPopup = false">
+                    <div class="popup" enter-active-class="animate_animated animate__fadeIn" v-if="mostrarPopup">
                         <div class="row justify-content-center">
                             <div class="col-lg-4">
                                 <div class="cuadro align-middle shadow-lg">
-                                    <div class="row justify-content-center mb-2">
-                                        <h4>Seleccioná opción:</h4>
+                                    <div class="row">
+                                        <div class="col">
+                                            <i v-if="tipoElegido != ''" v-on:click="tipoElegido = ''"class="fas fa-arrow-left float-left"></i>
+                                            <i v-on:click="mostrarPopup = false" class="fas fa-times float-right"></i>
+                                        </div>
                                     </div>
-                                    <div class="row justify-content-center mb-2">
+
+                                    <div class="row justify-content-center mb-2 text-capitalize">
+                                        <h4>{{tipoElegido == ''? 'Seleccioná opción' : tipoElegido}}:</h4>
+                                    </div>
+                                    
+
+                                    <div v-if="tipoElegido == ''" class="row justify-content-center mb-2">
+                                        <div class="col">
+                                            <button class="btn btn-popup" v-for="oferta in Object.keys(ofertas)" v-on:click="tipoElegido = oferta">{{oferta}}</button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div v-if="tipoElegido == 'hamburguesas'" class="row justify-content-center mb-2">
                                         <div class="col">
                                             <button class="btn btn-popup" v-for="oferta in ofertas.hamburguesas" v-on:click="add(oferta, pedido.hamburguesas)">{{oferta.nombre}}<span class="precio-individual-light">${{oferta.precio}}</span></button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div v-if="tipoElegido == 'papas'" class="row justify-content-center mb-2">
+                                        <div class="col">
                                             <button class="btn btn-popup" v-for="oferta in ofertas.papas" v-on:click="add(oferta, pedido.papas)">{{oferta.nombre}}<span class="precio-individual-light">${{oferta.precio}}</span></button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div v-if="tipoElegido == 'bebidas'" class="row justify-content-center mb-2">
+                                        <div class="col">
                                             <button class="btn btn-popup" v-for="oferta in ofertas.bebidas" v-on:click="add(oferta, pedido.bebidas)">{{oferta.nombre}}<span class="precio-individual-light">${{oferta.precio}}</span></button>
                                         </div>
                                     </div>

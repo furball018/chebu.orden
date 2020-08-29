@@ -7,8 +7,9 @@ var app = new Vue({
         //Variable que va a contener el mensaje cuando se vaya creando
         msg: '', 
 
-        //Bool para mostrar y ocultar el popup de agregar
-        mostrarPopup: false, 
+        //Propiedades para mostrar y ocultar el popup de agregar
+        mostrarPopup: false,
+        tipoElegido: '',
         
         //Objeto con todas las cosas que CHEBU ofrece
         ofertas: {
@@ -109,6 +110,7 @@ var app = new Vue({
             item.id = Date.now();
             arr.push(item);
             this.mostrarPopup = false;
+            this.tipoElegido = '';
         },
 
         //Quitar del pedido
@@ -129,7 +131,9 @@ var app = new Vue({
         send: function() {
             var salto = '%0A';
             this.msg = ''
+
             this.msg = encodeURI('*Cliente:* ' + this.nombre) + salto;
+
             this.msg += encodeURI('*Orden:* ') + salto;
             
             this.pedido.hamburguesas.forEach(h => {
@@ -153,7 +157,9 @@ var app = new Vue({
             });
             
             this.msg += encodeURI('*Total:* $' + this.calcTotal + ' (sin envío incluido)') + salto;
+
             this.msg += this.observaciones != '' ? encodeURI('*Observaciones:* ' + this.observaciones) + salto : '';
+            
             this.msg += encodeURI('*Dirección:* ' + this.direccion);
             
             window.location.replace('https://wa.me/' + this.number + '?text=' + this.msg);

@@ -66,6 +66,7 @@ textarea {
     background-color: #18232d;
     margin-bottom: 10px;
     color: white;
+    text-transform: capitalize;
 }
 
 .btn-popup:hover{
