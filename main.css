@@ -205,7 +205,7 @@ textarea {
 }
 
 .warning {
-    color: #c44243;
+    color: rgba(255, 255, 255, .4);
     text-align: center;
 }
 
