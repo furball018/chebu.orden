@@ -203,3 +203,12 @@ textarea {
 .required{
     color: #c44243;
 }
+
+.warning {
+    color: #c44243;
+    text-align: center;
+}
+
+.warning:first-child {
+    margin-top: 5px;
+}
