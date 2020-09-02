@@ -13,7 +13,7 @@ let app = new Vue({
 
         //Propiedades para mostrar y ocultar mensajes
         mostrarMensajeEditar: false,
-        mostrarMensajeEditarConfirmado: $cookies.get('tutorial') == 'Yes'? true : false,
+        mostrarMensajeEditarConfirmado: $cookies.get('tutorial') == 'complete'? true : false,
         ocultarEn: 15000, //segundos
         
         //Objeto con todas las cosas que CHEBU ofrece
