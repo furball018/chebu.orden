@@ -13,7 +13,7 @@ let app = new Vue({
 
         //Propiedades para mostrar y ocultar mensajes
         mostrarMensajeEditar: false,
-        mostrarMensajeEditarConfirmado: false,
+        mostrarMensajeEditarConfirmado: $cookies.get('tutorial') == 'Yes'? true : false,
         ocultarEn: 15000, //segundos
         
         //Objeto con todas las cosas que CHEBU ofrece
@@ -133,8 +133,8 @@ let app = new Vue({
         },
         
         //Datos del cliente
-        nombre: '', 
-        direccion: '',
+        nombre: $cookies.get('clientname') == null? '' : $cookies.get('clientname'), 
+        direccion: $cookies.get('clientaddress') == null? '' : $cookies.get('clientaddress'),
         observaciones: ''
     },
     methods: {
@@ -199,6 +199,11 @@ let app = new Vue({
             this.msg += this.observaciones != '' ? encodeURI('*Observaciones:* ' + this.observaciones) + salto : '';
             
             this.msg += encodeURI('*Dirección:* ' + this.direccion);
+
+            $cookies.config('30d');
+            $cookies.set('clientname', this.nombre);
+            $cookies.set('clientaddress', this.direccion);
+            $cookies.set('tutorial', 'complete');
             
             window.location.replace('https://wa.me/' + this.number + '?text=' + this.msg);
         },
