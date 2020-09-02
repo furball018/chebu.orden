@@ -133,7 +133,7 @@
                                         {{hamburguesa.nombre}}
                                         <span class="precio-individual">${{calcIndividual(hamburguesa)}}</span>
                                         
-                                        <span class="icon" v-on:click="hamburguesa.editando = !hamburguesa.editando">
+                                        <span class="icon" v-on:click="hamburguesa.editando = !hamburguesa.editando; mostrarMensajeEditar = false; mostrarMensajeEditarConfirmado = true;">
                                             <i class="fas fa-edit"></i>
                                         </span>
                                         <span class="icon" v-on:click="remove(hamburguesa.id, 'hamburguesas')">

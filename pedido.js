@@ -35,7 +35,8 @@ let app = new Vue({
                     extras: [
                         {nombre: '🥓 Doble Panceta', precio: 30, estado: false},
                         {nombre: '🧀 Doble Chedar', precio: 30, estado: false},
-                        {nombre: '🍟 Papas con doble chedar', precio: 40, estado: false}
+                        {nombre: '🍟 Papas con doble chedar', precio: 40, estado: false},
+                        {nombre: '🥣 Tarrito de salsa CHEBU', precio: 20, estado: false}
                     ]
                 },
                 {
@@ -54,7 +55,8 @@ let app = new Vue({
                     extras: [
                         {nombre: '🥓 Doble Panceta', precio: 30, estado: false},
                         {nombre: '🧀 Doble Chedar', precio: 30, estado: false},
-                        {nombre: '🍟 Papas con doble chedar', precio: 40, estado: false}
+                        {nombre: '🍟 Papas con doble chedar', precio: 40, estado: false},
+                        {nombre: '🥣 Tarrito de salsa CHEBU', precio: 20, estado: false}
                     ]
                 },
                 {
@@ -73,7 +75,8 @@ let app = new Vue({
                     extras: [
                         {nombre: '🥓 Doble Panceta', precio: 30, estado: false},
                         {nombre: '🧀 Doble Chedar', precio: 30, estado: false},
-                        {nombre: '🍟 Papas con doble chedar', precio: 40, estado: false}
+                        {nombre: '🍟 Papas con doble chedar', precio: 40, estado: false},
+                        {nombre: '🥣 Tarrito de salsa CHEBU', precio: 20, estado: false}
                     ]
                 },
                 {
@@ -92,7 +95,8 @@ let app = new Vue({
                     extras: [
                         {nombre: '🥓 Doble Panceta', precio: 30, estado: false},
                         {nombre: '🧀 Doble Chedar', precio: 30, estado: false},
-                        {nombre: '🍟 Papas con doble chedar', precio: 40, estado: false}
+                        {nombre: '🍟 Papas con doble chedar', precio: 40, estado: false},
+                        {nombre: '🥣 Tarrito de salsa CHEBU', precio: 20, estado: false}
                     ]
                 },
             ],
@@ -102,8 +106,10 @@ let app = new Vue({
             ],
             gaseosas: [
                 {id: Number, nombre:'🥤 Coca-Cola 500ml', precio: 60},
-                {id: Number, nombre:'🥤 Coca-Cola 1,5L', precio: 150},
                 {id: Number, nombre:'🥤 Coca-Cola Zero 500ml', precio: 60},
+                {id: Number, nombre:'🥤 Sprite 500ml', precio: 60},
+                {id: Number, nombre:'🥤 Fanta 500ml', precio: 60},
+                {id: Number, nombre:'🥤 Coca-Cola 1,5L', precio: 150},
                 {id: Number, nombre:'🥤 Coca-Cola Zero 1,5L', precio: 150},
                 {id: Number, nombre:'🥤 Sprite 1,5L', precio: 150},
             ],
