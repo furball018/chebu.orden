@@ -14,7 +14,7 @@ let app = new Vue({
         //Propiedades para mostrar y ocultar mensajes
         mostrarMensajeEditar: false,
         mostrarMensajeEditarConfirmado: false,
-        ocultarEn: 12000, //segundos
+        ocultarEn: 15000, //segundos
         
         //Objeto con todas las cosas que CHEBU ofrece
         ofertas: {
