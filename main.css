@@ -217,6 +217,9 @@ textarea {
     position: fixed;
     z-index: 66;
     top: 0;
+    margin: 0 auto; /* Will not center vertically and won't work in IE6/7. */
+    left: 0;
+    right: 0;
 }
 
 .mensaje {
