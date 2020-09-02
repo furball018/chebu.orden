@@ -212,3 +212,44 @@ textarea {
 .warning:first-child {
     margin-top: 5px;
 }
+
+.container-mensaje {
+    position: fixed;
+    z-index: 66;
+    top: 0;
+}
+
+.mensaje {
+    z-index: 999;
+    background-color: white;
+    color: #000;
+    border-radius: 0 0 20px 20px;
+    overflow: hidden;
+}
+
+.mensaje .cuerpo{
+    padding: 10px;
+}
+
+.mensaje .cuerpo p, .mensaje .cuerpo h4{
+    text-align: center;
+}
+
+.btn-mensaje{
+    font-size: x-large;
+    border: none;
+    background-color: #fff;
+    border-top: 1px solid #f0f0f0;
+    color: #c44243;
+    width: 100%;
+    padding: 10px;
+}
+
+.btn-mensaje:hover {
+    color: #18232d !important;
+}
+
+
+.red {
+    color: #c44243;
+}

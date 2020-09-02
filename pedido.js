@@ -10,6 +10,11 @@ let app = new Vue({
         //Propiedades para mostrar y ocultar el popup de agregar
         mostrarPopup: false,
         tipoElegido: '',
+
+        //Propiedades para mostrar y ocultar mensajes
+        mostrarMensajeEditar: false,
+        mostrarMensajeEditarConfirmado: false,
+        ocultarEn: 12000, //segundos
         
         //Objeto con todas las cosas que CHEBU ofrece
         ofertas: {
@@ -190,6 +195,10 @@ let app = new Vue({
             this.msg += encodeURI('*Dirección:* ' + this.direccion);
             
             window.location.replace('https://wa.me/' + this.number + '?text=' + this.msg);
+        },
+        showTutorial: function() {
+            this.mostrarMensajeEditar = true;
+            setTimeout(() => this.mostrarMensajeEditar = false, this.ocultarEn);
         }
     },
     computed: {

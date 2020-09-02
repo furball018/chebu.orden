@@ -13,13 +13,36 @@
 </head>
 <body>
     <div id="app">
-
+        
+        <!-- Mensajes Tutoriales -->
+        <div class="container container-mensaje">
+            <div class="row">
+                <div class="col">
+                    <transition 
+                    enter-active-class="animate__animated animate__slideInDown animate__delay-2s"
+                    leave-active-class="animate__animated animate__slideOutUp"
+                    >
+                    <div class="mensaje shadow-lg " v-if="mostrarMensajeEditar && !mostrarMensajeEditarConfirmado">
+                        <div class="cuerpo">
+                            <h4 class="mt-2">Consejo:</h4>
+                            <p>Tocá el botón <i class="fas fa-edit red"></i> (al lado de tus hamburguesas) para modificar los <span class="red">toppings</span> y los <span class="red">extras</span>!</p>
+                        </div>
+                        <div class="botones">
+                            <button class="btn-mensaje" v-on:click="mostrarMensajeEditarConfirmado = true">👍 Dale</button>
+                        </div>
+                    </div>
+                    </transition>
+                </div>
+            </div>
+        </div>
+        
         <!-- Background -->
         <div class="background">
             <div class="strip strip-1"></div>
             
             <!-- Main Container -->
             <div class="container">
+                
                 
                 <!-- Popup Agregar -->
                 <transition 
@@ -50,7 +73,7 @@
                                     
                                     <div v-if="tipoElegido == 'hamburguesas'" class="row justify-content-center mb-2">
                                         <div class="col">
-                                            <button class="btn btn-popup" v-for="oferta in ofertas.hamburguesas" v-on:click="add(oferta, 'hamburguesas')">{{oferta.nombre}}<span class="precio-individual-light">${{oferta.precio}}</span></button>
+                                            <button class="btn btn-popup" v-for="oferta in ofertas.hamburguesas" v-on:click="add(oferta, 'hamburguesas'); showTutorial();">{{oferta.nombre}}<span class="precio-individual-light">${{oferta.precio}}</span></button>
                                         </div>
                                     </div>
                                     
@@ -83,8 +106,8 @@
                     </div>
                 </div>
 
-                <div class="row justify-content-center mb-2">
-                    <h4>Armá tu pedido!</h4>
+                <div class="row justify-content-center mb-2 mt-5">
+                    <h4>Acá armás tu pedido:</h4>
                 </div>
                 
                 <!-- Order Confirmation -->
@@ -216,8 +239,13 @@
                             <!-- Total -->
                             <p class="total mt-4">Total: <span class="precio-total">${{calcTotal}}</span></p>
                             <p class="total-chico">(+ precio del envío)</p>
-                            <hr>
+                        </div>
 
+                        <div class="row justify-content-center mb-2 mt-5">
+                            <h4>Acá ponés tus datos:</h4>
+                        </div>
+
+                        <div class="confirmation">
                             <!-- Datos del usuario -->
                             <div class="form-group">
                                 <label>Nombre <span v-if="nombre == ''" class="required">*</span></label>
