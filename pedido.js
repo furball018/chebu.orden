@@ -198,7 +198,10 @@ let app = new Vue({
         },
         showTutorial: function() {
             this.mostrarMensajeEditar = true;
-            setTimeout(() => this.mostrarMensajeEditar = false, this.ocultarEn);
+            setTimeout(() => {
+                this.mostrarMensajeEditar = false;
+                this.mostrarMensajeEditarConfirmado = true;
+            }, this.ocultarEn);
         }
     },
     computed: {
