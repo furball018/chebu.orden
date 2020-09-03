@@ -148,15 +148,15 @@
                                         <div class="toppings" v-if="hamburguesa.editando">
                                             <div>
                                                 <p class="editar-titulo">Toppings</p>
-                                                <button v-for="topping in hamburguesa.toppings" class="btn-topping" v-bind:class="{'sin-topping': !topping.estado, 'shadow': topping.estado}" v-on:click="topping.estado = !topping.estado">{{topping.nombre}}</button>
+                                                <button v-for="topping in hamburguesa.toppings" class="btn-topping" v-bind:class="{'sin-topping': !topping.estado, 'shadow-sm': topping.estado}" v-on:click="topping.estado = !topping.estado">{{topping.nombre}}</button>
                                             </div>
                                             <div class="mt-1">
                                                 <p class="editar-titulo">Extras</p>
-                                                <button v-for="extra in hamburguesa.extras" class="btn-extras" v-bind:class="{'sin-topping': !extra.estado, 'shadow': extra.estado}" v-on:click="extra.estado = !extra.estado">{{extra.nombre}} (+${{extra.precio}})</button>
+                                                <button v-for="extra in hamburguesa.extras" class="btn-extras" v-bind:class="{'sin-topping': !extra.estado, 'shadow-sm': extra.estado}" v-on:click="extra.estado = !extra.estado">{{extra.nombre}} (+${{extra.precio}})</button>
                                             </div>
                                             <div class="mt-1">
                                                 <p class="editar-titulo">Cantidad</p>
-                                                <div class="selector-cantidad shadow">
+                                                <div class="selector-cantidad shadow-sm">
                                                     <button class="btn-cantidad" v-on:click="if (hamburguesa.cantidad > 1) hamburguesa.cantidad--;"><i class="fas fa-minus"></i></button>
                                                     <div class="cantidad-mostrar">{{hamburguesa.cantidad}} × 🍔</div>
                                                     <button class="btn-cantidad" v-on:click="hamburguesa.cantidad++"><i class="fas fa-plus"></i></button>
