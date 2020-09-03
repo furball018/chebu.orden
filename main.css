@@ -126,7 +126,6 @@ textarea {
 }
 
 .precio-individual{
-    margin-left: 10px;
     color: rgba(24, 35, 45, .4);
 }
 
@@ -177,6 +176,32 @@ textarea {
     margin-bottom: 5px;
     margin-right: 5px;
     transition: 0.3s;
+}
+
+.selector-cantidad {
+    display: inline-flex;
+    width: auto;
+    align-items: flex-start;
+    background-color: rgba(24, 35, 45, .4);
+    color: white;
+    font-size: small;
+    border-radius: 30px;
+    border: none;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    overflow: hidden;
+}
+
+.btn-cantidad {
+    display: inline;
+    border: none;
+    background-color: rgba(24, 35, 45, .2);
+    padding: 8px 12px;
+    color: white;
+}
+
+.cantidad-mostrar {
+    padding: 5px 10px;
 }
 
 .btn-borrar{
@@ -251,7 +276,6 @@ textarea {
     color: #18232d !important;
     background-color: rgb(226, 226, 226);
 }
-
 
 .red {
     color: #c44243;

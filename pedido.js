@@ -23,6 +23,7 @@ let app = new Vue({
                     id: Number,
                     nombre: '🍔 Simple',
                     precio: 250,
+                    cantidad: 1,
                     editando: false,
                     toppings: [
                         {nombre: '🥓 Panceta', estado: true},  
@@ -43,6 +44,7 @@ let app = new Vue({
                     id: Number,
                     nombre: '🍔 Doble',
                     precio: 300,
+                    cantidad: 1,
                     editando: false,
                     toppings: [
                         {nombre: '🥓 Panceta', estado: true},  
@@ -63,6 +65,7 @@ let app = new Vue({
                     id: Number,
                     nombre: '🍔 Triple',
                     precio: 350,
+                    cantidad: 1,
                     editando: false,
                     toppings: [
                         {nombre: '🥓 Panceta', estado: true},  
@@ -83,6 +86,7 @@ let app = new Vue({
                     id: Number,
                     nombre: '🍔 Cuadruple',
                     precio: 400,
+                    cantidad: 1,
                     editando: false,
                     toppings: [
                         {nombre: '🥓 Panceta', estado: true},  
@@ -158,7 +162,7 @@ let app = new Vue({
             hamburguesa.extras.forEach(ex =>{
                 precio += ex.estado? ex.precio : 0;
             })
-            return precio;
+            return precio * hamburguesa.cantidad;
         },
 
         //Escribir el mensaje y enviarlo por whatsapp
@@ -171,6 +175,7 @@ let app = new Vue({
             this.msg += encodeURI('*Orden:* ') + salto;
             
             this.pedido.hamburguesas.forEach(h => {
+                this.msg += h.cantidad > 1? h.cantidad + ' × ' : '';
                 this.msg += h.nombre + ' (con ';
                 h.toppings.forEach(top => {
                     this.msg += top.estado? top.nombre + ', ' : '';
@@ -221,10 +226,12 @@ let app = new Vue({
             let total = 0;
 
             this.pedido.hamburguesas.forEach(hamburguesa => {
-                total += hamburguesa.precio;
+                let estePrecio = 0;
+                estePrecio += hamburguesa.precio;
                 hamburguesa.extras.forEach(ex => {
-                    total += ex.estado? ex.precio : 0;
+                    estePrecio += ex.estado? ex.precio : 0;
                 });
+                total += estePrecio * hamburguesa.cantidad;
             });
 
             this.pedido.papas.forEach(papa => {

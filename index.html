@@ -130,6 +130,7 @@
                             >
                                 <div class="orden" v-bind:key="hamburguesa.id" v-for="hamburguesa in pedido.hamburguesas">
                                     <p>
+                                        {{hamburguesa.cantidad > 1 ? hamburguesa.cantidad + ' ×' : ''}}
                                         {{hamburguesa.nombre}}
                                         <span class="precio-individual">${{calcIndividual(hamburguesa)}}</span>
                                         
@@ -152,6 +153,14 @@
                                             <div class="mt-1">
                                                 <p class="editar-titulo">Extras</p>
                                                 <button v-for="extra in hamburguesa.extras" class="btn-extras" v-bind:class="{'sin-topping': !extra.estado}" v-on:click="extra.estado = !extra.estado">{{extra.nombre}} (+${{extra.precio}})</button>
+                                            </div>
+                                            <div class="mt-1">
+                                                <p class="editar-titulo">Cantidad</p>
+                                                <div class="selector-cantidad">
+                                                    <button class="btn-cantidad" v-on:click="if (hamburguesa.cantidad > 1) hamburguesa.cantidad--;"><i class="fas fa-minus"></i></button>
+                                                    <div class="cantidad-mostrar">{{hamburguesa.cantidad}} × 🍔</div>
+                                                    <button class="btn-cantidad" v-on:click="hamburguesa.cantidad++"><i class="fas fa-plus"></i></button>
+                                                </div>
                                             </div>
                                         </div>
                                     </transition>
