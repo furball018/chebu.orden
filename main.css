@@ -1,8 +1,11 @@
+* {
+    touch-action: manipulation;
+}
+
 body{
     color: white;
     font-family: 'Alata', sans-serif;
     background-color:#18232d;
-    touch-action: manipulation;
 }
 
 button:focus {outline:0;}
