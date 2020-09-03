@@ -143,7 +143,7 @@ let app = new Vue({
     },
     methods: {
         //Agregar al pedido
-        add: function(item, key){
+        add(item, key){
             // (!) hay que clonar el item que se pasa como referencia, sino al agregar el mismo item se guardan como referencias y no como nuevos objetos.
             let newItem = {...item};
             // (!) lo mismo para los arrays de objetos que hay en dentro.
@@ -156,12 +156,12 @@ let app = new Vue({
         },
 
         //Quitar del pedido
-        remove: function(id, key){
+        remove(id, key){
             this.pedido[key] = this.pedido[key].filter(item => item.id !== id);
         },
 
         //Calcular precio de las hamburguesas + extras
-        calcIndividual: function(hamburguesa){
+        calcIndividual(hamburguesa){
             let precio = hamburguesa.precio;
             hamburguesa.extras.forEach(ex =>{
                 precio += ex.estado? ex.precio : 0;
@@ -170,7 +170,7 @@ let app = new Vue({
         },
 
         //Escribir el mensaje y enviarlo por whatsapp
-        send: function() {
+        send(){
             let salto = '%0A';
             this.msg = ''
 
@@ -216,7 +216,7 @@ let app = new Vue({
             
             window.location.replace('https://wa.me/' + this.number + '?text=' + this.msg);
         },
-        showTutorial: function() {
+        showTutorial() {
             this.mostrarMensajeEditar = true;
             setTimeout(() => {
                 this.mostrarMensajeEditar = false;
@@ -226,7 +226,7 @@ let app = new Vue({
     },
     computed: {
         //Calcular el total del pedido
-        calcTotal: function() {
+        calcTotal() {
             let total = 0;
 
             this.pedido.hamburguesas.forEach(hamburguesa => {
