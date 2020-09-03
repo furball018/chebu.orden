@@ -144,7 +144,11 @@ let app = new Vue({
     methods: {
         //Agregar al pedido
         add: function(item, key){
-            let newItem = {...item}; // (!) hay que clonar el item que se pasa como referencia, sino al agregar el mismo item se repiten las animaciones.
+            // (!) hay que clonar el item que se pasa como referencia, sino al agregar el mismo item se guardan como referencias y no como nuevos objetos.
+            let newItem = {...item};
+            // (!) lo mismo para los arrays de objetos que hay en dentro.
+            newItem.toppings = item.toppings.map(object => ({ ...object }));
+            newItem.extras = item.extras.map(object => ({ ...object }));
             newItem.id = Date.now();
             this.pedido[key] = [...this.pedido[key], newItem];
             this.mostrarPopup = false;
