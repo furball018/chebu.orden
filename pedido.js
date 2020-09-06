@@ -147,8 +147,10 @@ let app = new Vue({
             // (!) hay que clonar el item que se pasa como referencia, sino al agregar el mismo item se guardan como referencias y no como nuevos objetos.
             let newItem = {...item};
             // (!) lo mismo para los arrays de objetos que hay en dentro.
-            newItem.toppings = item.toppings.map(object => ({ ...object }));
-            newItem.extras = item.extras.map(object => ({ ...object }));
+            if (key == 'hamburguesas'){
+                newItem.toppings = item.toppings.map(object => ({ ...object }));
+                newItem.extras = item.extras.map(object => ({ ...object }));
+            }
             newItem.id = Date.now();
             this.pedido[key] = [...this.pedido[key], newItem];
             this.mostrarPopup = false;
