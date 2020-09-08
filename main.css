@@ -77,6 +77,10 @@ textarea {
     background-color: rgba(24, 35, 45, .7);
 }
 
+.aviso {
+    text-align: center;
+}
+
 .logo{
     background-image: url(img/logo.png);
     background-size: contain;
@@ -160,11 +164,12 @@ textarea {
 
 .btn-topping{
     color: white;
-    background-color: rgba(24, 35, 45, .4);
+    border: none;
+    background: rgb(31,149,0);
+    background: linear-gradient(137deg, rgba(31,149,0,1) 0%, rgb(146, 221, 66) 100%);
     font-size: small;
     border-radius: 30px;
-    border: none;
-    padding: 5px 10px;
+    padding: 3px 7px;
     margin-bottom: 5px;
     margin-right: 5px;
     transition: 0.3s;
@@ -172,14 +177,23 @@ textarea {
 
 .btn-extras{
     color: white;
-    background-color: rgba(250, 128, 54, .6);
+    border: 2px solid #68d69f;
+    background: rgb(31,149,0);
+    background: linear-gradient(137deg, rgba(31,149,0,1) 0%, rgb(146, 221, 66) 100%);
     font-size: small;
     border-radius: 30px;
     border: none;
-    padding: 5px 10px;
+    padding: 3px 7px;
     margin-bottom: 5px;
     margin-right: 5px;
     transition: 0.3s;
+}
+
+.sin-topping{
+    color: white;
+    opacity: 0.7;
+    border: none;
+    background: repeating-linear-gradient(45deg, transparent, transparent 5px,rgba(24, 35, 45, .1) 5px,rgba(24, 35, 45, .1) 10px), linear-gradient(to bottom, rgba(24, 35, 45, .1), rgba(24, 35, 45, .1));
 }
 
 .selector-cantidad {
@@ -202,6 +216,11 @@ textarea {
     background-color: rgba(24, 35, 45, .2);
     padding: 8px 12px;
     color: white;
+    transition: opacity 0.4s;
+}
+
+.btn-cantidad:disabled{
+    opacity: 0.3;
 }
 
 .cantidad-mostrar {
@@ -217,10 +236,6 @@ textarea {
     padding: 5px 10px;
     margin-bottom: 5px;
     margin-top: 10px;
-}
-
-.sin-topping{
-    background: repeating-linear-gradient(45deg, transparent, transparent 5px,rgba(24, 35, 45, .1) 5px,rgba(24, 35, 45, .1) 10px), linear-gradient(to bottom, rgba(24, 35, 45, .1), rgba(24, 35, 45, .1));
 }
 
 .btn-send{
@@ -240,45 +255,6 @@ textarea {
 
 .warning:first-child {
     margin-top: 5px;
-}
-
-.container-mensaje {
-    position: fixed;
-    z-index: 66;
-    top: 0;
-    margin: 0 auto; /* Will not center vertically and won't work in IE6/7. */
-    left: 0;
-    right: 0;
-}
-
-.mensaje {
-    z-index: 999;
-    background-color: white;
-    color: #000;
-    border-radius: 0 0 20px 20px;
-    overflow: hidden;
-}
-
-.mensaje .cuerpo{
-    padding: 10px;
-}
-
-.mensaje .cuerpo p, .mensaje .cuerpo h4{
-    text-align: center;
-}
-
-.btn-mensaje{
-    border: none;
-    background-color: #fff;
-    border-top: 1px solid #f0f0f0;
-    color: #c44243;
-    width: 100%;
-    padding: 10px;
-}
-
-.btn-mensaje:focus {
-    color: #18232d !important;
-    background-color: rgb(226, 226, 226);
 }
 
 .red {

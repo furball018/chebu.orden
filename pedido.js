@@ -11,11 +11,6 @@ let app = new Vue({
         mostrarPopup: false,
         tipoElegido: '',
 
-        //Propiedades para mostrar y ocultar mensajes
-        mostrarMensajeEditar: false,
-        mostrarMensajeEditarConfirmado: $cookies.get('tutorial') == 'complete'? true : false,
-        ocultarEn: 15000, //segundos
-        
         //Objeto con todas las cosas que CHEBU ofrece
         ofertas: {
             hamburguesas: [
@@ -35,8 +30,8 @@ let app = new Vue({
                     ],
                     extras: [
                         {nombre: '🥓 Doble Panceta', precio: 30, estado: false},
-                        {nombre: '🧀 Doble Chedar', precio: 30, estado: false},
-                        {nombre: '🍟 Papas con doble chedar', precio: 40, estado: false},
+                        {nombre: '🧀 Doble Cheddar por Carne', precio: 15, estado: false},
+                        {nombre: '🍟 Papas con Cheddar', precio: 40, estado: false},
                         {nombre: '🥣 Tarrito de salsa CHEBU', precio: 20, estado: false}
                     ]
                 },
@@ -56,8 +51,8 @@ let app = new Vue({
                     ],
                     extras: [
                         {nombre: '🥓 Doble Panceta', precio: 30, estado: false},
-                        {nombre: '🧀 Doble Chedar', precio: 30, estado: false},
-                        {nombre: '🍟 Papas con doble chedar', precio: 40, estado: false},
+                        {nombre: '🧀 Doble Cheddar por Carne', precio: 30, estado: false},
+                        {nombre: '🍟 Papas con Cheddar', precio: 40, estado: false},
                         {nombre: '🥣 Tarrito de salsa CHEBU', precio: 20, estado: false}
                     ]
                 },
@@ -77,8 +72,8 @@ let app = new Vue({
                     ],
                     extras: [
                         {nombre: '🥓 Doble Panceta', precio: 30, estado: false},
-                        {nombre: '🧀 Doble Chedar', precio: 30, estado: false},
-                        {nombre: '🍟 Papas con doble chedar', precio: 40, estado: false},
+                        {nombre: '🧀 Doble Cheddar por Carne', precio: 45, estado: false},
+                        {nombre: '🍟 Papas con Cheddar', precio: 40, estado: false},
                         {nombre: '🥣 Tarrito de salsa CHEBU', precio: 20, estado: false}
                     ]
                 },
@@ -98,15 +93,15 @@ let app = new Vue({
                     ],
                     extras: [
                         {nombre: '🥓 Doble Panceta', precio: 30, estado: false},
-                        {nombre: '🧀 Doble Chedar', precio: 30, estado: false},
-                        {nombre: '🍟 Papas con doble chedar', precio: 40, estado: false},
+                        {nombre: '🧀 Doble Cheddar por Carne', precio: 60, estado: false},
+                        {nombre: '🍟 Papas con Cheddar', precio: 40, estado: false},
                         {nombre: '🥣 Tarrito de salsa CHEBU', precio: 20, estado: false}
                     ]
                 },
             ],
             papas: [
                 {id: Number, nombre: '🍟 Papas simples', precio: 150},
-                {id: Number, nombre: '🍟 Papas con Chedar', precio: 200}
+                {id: Number, nombre: '🍟 Papas con Cheddar', precio: 200}
             ],
             gaseosas: [
                 {id: Number, nombre:'🥤 Coca-Cola 500ml', precio: 60},
@@ -214,16 +209,8 @@ let app = new Vue({
             $cookies.config('30d');
             $cookies.set('clientname', this.nombre);
             $cookies.set('clientaddress', this.direccion);
-            $cookies.set('tutorial', 'complete');
             
             window.location.replace('https://wa.me/' + this.number + '?text=' + this.msg);
-        },
-        showTutorial() {
-            this.mostrarMensajeEditar = true;
-            setTimeout(() => {
-                this.mostrarMensajeEditar = false;
-                this.mostrarMensajeEditarConfirmado = true;
-            }, this.ocultarEn);
         }
     },
     computed: {

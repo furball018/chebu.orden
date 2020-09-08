@@ -14,28 +14,6 @@
 <body>
     <div id="app">
         
-        <!-- Mensajes Tutoriales -->
-        <div class="container container-mensaje">
-            <div class="row">
-                <div class="col-lg-4">
-                    <transition 
-                    enter-active-class="animate__animated animate__slideInDown animate__delay-2s"
-                    leave-active-class="animate__animated animate__slideOutUp animate__faster"
-                    >
-                    <div class="mensaje shadow-lg " v-if="mostrarMensajeEditar && !mostrarMensajeEditarConfirmado">
-                        <div class="cuerpo">
-                            <h4 class="mt-2">Consejo:</h4>
-                            <p>Tocá el botón <i class="fas fa-edit red"></i> (al lado de tus hamburguesas) para modificar los <span class="red">toppings</span> y los <span class="red">extras</span>!</p>
-                        </div>
-                        <div class="botones">
-                            <button class="btn-mensaje" v-on:click="mostrarMensajeEditarConfirmado = true">👍 Dale</button>
-                        </div>
-                    </div>
-                    </transition>
-                </div>
-            </div>
-        </div>
-        
         <!-- Background -->
         <div class="background">
             <div class="strip strip-1"></div>
@@ -73,7 +51,8 @@
                                     
                                     <div v-if="tipoElegido == 'hamburguesas'" class="row justify-content-center mb-2">
                                         <div class="col">
-                                            <button class="btn btn-popup shadow" v-for="oferta in ofertas.hamburguesas" v-on:click="add(oferta, 'hamburguesas'); showTutorial();">{{oferta.nombre}}<span class="precio-individual-light">${{oferta.precio}}</span></button>
+                                            <button class="btn btn-popup shadow" v-for="oferta in ofertas.hamburguesas" v-on:click="add(oferta, 'hamburguesas')">{{oferta.nombre}}<span class="precio-individual-light">${{oferta.precio}}</span></button>
+                                            <p class="aviso">luego de agregar una hamburguesa usá el botón <i class="fas fa-edit red"></i> para modificar los <span class="red">toppings</span> y los <span class="red">extras</span>!</p>
                                         </div>
                                     </div>
                                     
@@ -110,7 +89,7 @@
                     <h4>Acá armás tu pedido:</h4>
                 </div>
                 
-                <!-- Order Confirmation -->
+                <!-- Armá tu orden -->
                 <div class="row justify-content-center mb-5">
                     <div class="col-lg-4">
                         <div class="confirmation shadow">
@@ -134,7 +113,7 @@
                                         {{hamburguesa.nombre}}
                                         <span class="precio-individual">${{calcIndividual(hamburguesa)}}</span>
                                         
-                                        <span class="icon" v-on:click="hamburguesa.editando = !hamburguesa.editando; mostrarMensajeEditar = false; mostrarMensajeEditarConfirmado = true;">
+                                        <span class="icon" v-on:click="hamburguesa.editando = !hamburguesa.editando">
                                             <i class="fas fa-edit"></i>
                                         </span>
                                         <span class="icon" v-on:click="remove(hamburguesa.id, 'hamburguesas')">
@@ -148,7 +127,10 @@
                                         <div class="toppings" v-if="hamburguesa.editando">
                                             <div>
                                                 <p class="editar-titulo">Toppings</p>
-                                                <button v-for="topping in hamburguesa.toppings" class="btn-topping" v-bind:class="{'sin-topping': !topping.estado, 'shadow-sm': topping.estado}" v-on:click="topping.estado = !topping.estado">{{topping.nombre}}</button>
+                                                <button v-for="topping in hamburguesa.toppings" class="btn-topping" v-bind:class="{'sin-topping': !topping.estado, 'shadow-sm': topping.estado}" v-on:click="topping.estado = !topping.estado">
+                                                    <div class="topping-on-off-indicator"></div>
+                                                    <p>{{topping.nombre}}</p>
+                                                </button>
                                             </div>
                                             <div class="mt-1">
                                                 <p class="editar-titulo">Extras</p>
@@ -157,7 +139,7 @@
                                             <div class="mt-1">
                                                 <p class="editar-titulo">Cantidad</p>
                                                 <div class="selector-cantidad shadow-sm">
-                                                    <button class="btn-cantidad" v-on:click="if (hamburguesa.cantidad > 1) hamburguesa.cantidad--;"><i class="fas fa-minus"></i></button>
+                                                    <button class="btn-cantidad" v-on:click="hamburguesa.cantidad--" v-bind:disabled="hamburguesa.cantidad <= 1"><i class="fas fa-minus"></i></button>
                                                     <div class="cantidad-mostrar">{{hamburguesa.cantidad}} × 🍔</div>
                                                     <button class="btn-cantidad" v-on:click="hamburguesa.cantidad++"><i class="fas fa-plus"></i></button>
                                                 </div>
